@@ -1,4 +1,4 @@
-if (process.env.node_env === 'production') {
+if (process.env.NODE_ENV === 'production') {
     module.exports = {
         mongoURI: 'mongodb://ankushgarg1998:jaimatadi@ds263948.mlab.com:63948/vidjot-prod'
     }
