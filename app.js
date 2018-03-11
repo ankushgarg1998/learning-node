@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Load Routes
 const ideas = require('./routes/ideas');
@@ -18,11 +18,13 @@ const users = require('./routes/users');
 
 // Passport Config
 require('./config/passport')(passport);
+// DB Config
+const db = require('./config/database');
 
 // Map global promise = get rid of warning
 mongoose.Promise = global.Promise;
 // Connect to mongoose
-mongoose.connect('mongodb://localhost/vidjot-dev', {
+mongoose.connect(db.mongoURI, {
     // useMongoClient: true
 })
     .then(() => console.log('MongoDB Connected...'))
